@@ -1,0 +1,8 @@
+title: Photo Mode
+originalAuthor: Zurphing
+description: Press only the Select Button while the game is paused to enter Photo Mode. While in Photo Mode, you can move the camera, press R2 to frame advance, and use Up/Down on the D-Pad to change zoom level, or Left/Right on the D-Pad to change the brightness level. To unfreeze time, pause the game and press Select again.
+assets:
+- name: scripts/PhotoMode.lua
+  method: copy
+  source:
+  - name: PhotoMode.lua
