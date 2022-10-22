@@ -139,24 +139,15 @@ scanmultihp3 = 0xA04BEA - offset
 scanmultihp4 = 0xA04BEE - offset
 scanhplose = 0xA04BFE - offset
 
---KSX Invincibility
-invincible = 0x3D3966 - offset
-
-
-
-
-if ReadInput2 == 65537 and ReadInt(GameSlowdown) == 1065353216 and MenuFlag == 0x03 then --Now toggles with Select in the pause menu. Need a better way to toggle.
+if ReadInput2 == 65537 and ReadInt(GameSlowdown) == 1065353216 and MenuFlag == 0x03 then --Now toggles with Select in the pause menu.
 	WriteFloat(HCamSpd, 1000)
 	WriteFloat(YCamSpd, 60000.35099999905)
-	--WriteFloat(YCamSpd, 0.35099999905) Old YCamSpd value.
 	WriteFloat(GameSlowdown, 0.00005999999848) --Near 0 FPS, but allows camera functionality while still freezing the game.
 	ConsolePrint("DEBUG: Select in Menu detected. Photo Mode Enabled.")
 	toggling = true
 	WriteFloat(DrawRange, DrawRange2*-1)
 	WriteFloat(YCamCurrentLook, 250) --Prevents the weird issue where the camera would swing overhead upon activating. Now, just goes low to the floor.
 
---KSX Part: Invincibility
---	WriteByte(invincible, 0x72)
 --KSX Part
 	WriteFloat(Map, 0, true)
 	WriteFloat(MapPosition, 0, true)
@@ -267,8 +258,6 @@ elseif ReadInput2 == 65537 and ReadInt(GameSlowdown) == 1031127695 and toggling 
 	ConsolePrint("DEBUG: Select in Menu/In-Game detected. Photo Mode Disabled.")
 	WriteFloat(DrawRange, DrawRange2*-1)
 
---KSX Part: Invincibility
---	WriteByte(invincible, 0x74)
 --KSX Part: No HUD. Restores most of the HUD elements to normal. 
 	WriteFloat(Map, 1, true)
 	WriteFloat(MapPosition, 1, true)
