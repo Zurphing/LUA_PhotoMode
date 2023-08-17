@@ -37,8 +37,6 @@ ReadInput2 = ReadInt(ReadInput)
 StickInput = 0x29F89F0 - 0x56454E
 HCamView = 0x716A70 - 0x56454E
 HCamView2 = ReadFloat(HCamView)
-DrawRange = 0x2A20EA0-0x56454E
-DrawRange2 = ReadFloat(DrawRange) 
 
 -- KSX Part from NoHud
 Map = ReadLong(0xABA578 - offset)+0xBC0, true
@@ -145,7 +143,6 @@ if ReadInput2 == 65537 and ReadInt(GameSlowdown) == 1065353216 and MenuFlag == 0
 	WriteFloat(GameSlowdown, 0.00005999999848) --Near 0 FPS, but allows camera functionality while still freezing the game.
 	ConsolePrint("DEBUG: Select in Menu detected. Photo Mode Enabled.")
 	toggling = true
-	WriteFloat(DrawRange, DrawRange2*-1)
 	WriteFloat(YCamCurrentLook, 250) --Prevents the weird issue where the camera would swing overhead upon activating. Now, just goes low to the floor.
 
 --KSX Part
@@ -256,8 +253,6 @@ elseif ReadInput2 == 65537 and ReadInt(GameSlowdown) == 1031127695 and toggling 
 	WriteFloat(ZoomIn, 1.5) --This version of ZoomIn also zooms hud elements like the lock-on, instead of leaving them awkwardly out.
 	toggling = false
 	ConsolePrint("DEBUG: Select in Menu/In-Game detected. Photo Mode Disabled.")
-	WriteFloat(DrawRange, DrawRange2*-1)
-
 --KSX Part: No HUD. Restores most of the HUD elements to normal. 
 	WriteFloat(Map, 1, true)
 	WriteFloat(MapPosition, 1, true)
